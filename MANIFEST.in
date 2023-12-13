@@ -1,0 +1,3 @@
+recursive-include src/streamlit_ontology_elements/frontend *
+include README.md
+include LICENSE
