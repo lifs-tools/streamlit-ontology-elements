@@ -13,8 +13,8 @@ pip install streamlit-ontology-elements
 ```python
 import streamlit as st
 
-from streamlit_ontology_elements import streamlit_ontology_elements
+from st_ontology_elements import st_ontology_elements
 
-value = streamlit_ontology_elements()
+value = st_ontology_elements()
 
 st.write(value)

@@ -8,11 +8,11 @@ import streamlit.components.v1 as components
 # and that the code to display that component is in the "frontend" folder
 frontend_dir = (Path(__file__).parent / "frontend").absolute()
 _component_func = components.declare_component(
-	"streamlit_ontology_elements", path=str(frontend_dir)
+	"st_ontology_elements", path=str(frontend_dir)
 )
 
 # Create the python function that will be called
-def streamlit_ontology_elements(
+def st_ontology_elements(
     key: Optional[str] = None,
 ):
     """
@@ -27,7 +27,7 @@ def streamlit_ontology_elements(
 
 def main():
     st.write("## Example")
-    value = streamlit_ontology_elements()
+    value = st_ontology_elements()
 
     st.write(value)
 

@@ -8,7 +8,7 @@
       "author_email": "n.hoffmann@fz-juelich.de",
       "project_name": "Streamlit Ontology Elements",
       "package_name": "streamlit-ontology-elements",
-      "import_name": "streamlit_ontology_elements",
+      "import_name": "st_ontology_elements",
       "description": "Streamlit component that wraps the ontology elements to query, edit and autocomplete ontology-based terms.",
       "deployment_via_github_actions": "y",
       "working_with_dataframes": "n",
