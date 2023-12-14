@@ -4,15 +4,15 @@ from typing import Optional
 import streamlit as st
 import streamlit.components.v1 as components
 
-# Tell streamlit that there is a component called streamlit_ontology_elements,
+# Tell streamlit that there is a component called st_semlookp_widgets,
 # and that the code to display that component is in the "frontend" folder
 frontend_dir = (Path(__file__).parent / "frontend").absolute()
 _component_func = components.declare_component(
-	"st_ontology_elements", path=str(frontend_dir)
+	"st_semlookp_widgets", path=str(frontend_dir)
 )
 
 # Create the python function that will be called
-def st_ontology_elements(
+def st_semlookp_widgets(
     label: str,
     value: Optional[str] = "",
     key: Optional[str] = None,
@@ -33,8 +33,8 @@ def st_ontology_elements(
     return component_value
 
 def main():
-    st.write("## Streamlit Ontology Elements Autocomplete Demo (efo, ms, chebi)")
-    value = st_ontology_elements(
+    st.write("## Streamlit SemlookP Widgets Autocomplete Demo (efo, ms, chebi)")
+    value = st_semlookp_widgets(
         "ontology elements", 
         None,
         "ENTER",

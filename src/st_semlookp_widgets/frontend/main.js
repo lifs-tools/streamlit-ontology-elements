@@ -20,10 +20,11 @@ function onRender(event) {
     const {label, value, ontologies} = event.detail.args;
 
     // Set the label text to be what the user specified
-    const label_el = document.getElementById("ontology_input").getAttribute("label")
+    const label_el = document.getElementById("label")
     label_el.innerText = label
-
-    document.getElementById("ontology_input").setAttribute("ontologies", ontologies)
+    const type = "class"
+    const collection = "nfdi4chem"
+    document.getElementById("ontology_input").setAttribute("parameters", ontologies+"&"+type+"&"+collection)
 
     // Set the default value to be what the user specified
     const input = document.getElementById("ontology_input");
