@@ -2,6 +2,7 @@
 // `streamlit-component-lib.js`.
 // If you get an error about "Streamlit" not being defined, that
 // means you're missing that file.
+// import * from "./ontology-elements/ontology-elements.js"
 
 function sendValue(value) {
   Streamlit.setComponentValue(value)
@@ -15,12 +16,29 @@ function sendValue(value) {
 function onRender(event) {
   // Only run the render code the first time the component is loaded.
   if (!window.rendered) {
+    // Grab the label and default value that the user specified
+    const {label, value} = event.detail.args;
+
+    // Set the label text to be what the user specified
+    const label_el = document.getElementById("label")
+    label_el.innerText = label
+
+    // Set the default value to be what the user specified
+    const input = document.getElementById("ontology-input");
+    if (value) {
+      input.value = value
+    }
+
+    // On the keyup event, send the new value to Python
+    input.onkeyup = event => sendValue(event.target.value)
+
+    window.rendered = true
     // You most likely want to get the data passed in like this
     // const {input1, input2, input3} = event.detail.args
 
     // You'll most likely want to pass some data back to Python like this
     // sendValue({output1: "foo", output2: "bar"})
-    window.rendered = true
+    // window.rendered = true
   }
 }
 
@@ -29,4 +47,4 @@ Streamlit.events.addEventListener(Streamlit.RENDER_EVENT, onRender)
 // Tell Streamlit that the component is ready to receive events
 Streamlit.setComponentReady()
 // Render with the correct height, if this is a fixed-height component
-Streamlit.setFrameHeight(100)
+Streamlit.setFrameHeight(73)

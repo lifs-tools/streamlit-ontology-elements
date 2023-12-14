@@ -1,15 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>streamlit-ontology-elements</title>
-    <script src="./streamlit-component-lib.js"></script>
-    <script src="./main.js"></script>
-    <link rel="stylesheet" href="./style.css" />
-  </head>
-  <body>
-    <div id="root"></div>
-  </body>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>streamlit-ontology-elements</title>
+  <!-- <script type="importmap">
+    { "imports": {
+        "vue": "https://cdnjs.cloudflare.com/ajax/libs/vue/3.3.11/vue.esm-browser.prod.min.js"
+    } }
+  </script> -->
+  <!-- <script type="module" src="./ontology-elements/index.js"></script> -->
+  <script>
+    import '/home/nilshoffmann/node_modules/ontology-elements/dist/index.js';
+
+    let ontoInput = document.getElementById('ontologyInput');
+    ontoInput.addEventListener('change', saveValue);
+    function saveValue(e) {
+      document.getElementById('output').innerHTML = '';
+      ontoInput.setAttribute('value', e.detail[0]);
+      document.getElementById('output').innerHTML = document
+        .getElementById('ontologyInput')
+        .getAttribute('value');
+    }
+  </script>
+  <script type="module">
+    console.log("Initializing ontology-elements")
+    import * as oe from "" //"./ontology-elements/index.js"
+    console.log(oe)
+    const { OntologyAutoComplete, OntologyAnnotation, register } = oe
+    // const require = ontologyElements.require
+    // const ontologyElements = require('./ontology-elements')
+    // const OntologyAutoComplete = ontologyElements.OntologyAutoComplete
+    // const OntologyAnnotation = ontologyElements.OntologyAnnotation
+    // const register = ontologyElements.register
+    // import { OntologyAutoComplete, OntologyAnnotation, register } from './ontology-elements/index.js'
+    // import * as oeUtils from './ontology-elements/index.js'
+    // oeUtils.register()
+    console.log("ontology-elements initialized")
+    // register()
+
+    console.log("Decorating input box")
+    let ontoInput = document.getElementById("ontology-input")
+    ontoInput.addEventListener('change', saveValue);
+    function saveValue(e) {
+      document.getElementById('output').innerHTML = ""
+      ontoInput.setAttribute('value', e.detail[0])
+      document.getElementById('output').innerHTML = document.getElementById('ontology-input').getAttribute('value')
+    }
+  </script>
+  <script src="./streamlit-component-lib.js"></script>
+  <script src="./main.js"></script>
+  <link rel="stylesheet" href="./style.css" />
+</head>
+
+<body>
+  <div id="root">
+    <label id="label" for="ontology-input">This is a label</label>
+    <!-- <div class="input"> -->
+    <!-- <input type="text" name="text_input" id="input_box" /> -->
+    <div class="input">
+      <ontology-autocomplete id="ontology-input" format="text" label="Input field (ontology driven)"
+        info="Search terms across ontologies. Example: Homo sapiens, obi:Homo sapiens"
+        @change="value = $event.detail[0]" placeholder="search term"
+        ontologies="chmo,ncbitaxon,pato,efo,mtbls,bto,chebi,ncit,uo"></ontology-autocomplete>
+    </div>
+  </div>
+</body>
+
 </html>
