@@ -1,0 +1,11 @@
+html {
+  background-color: white !important;
+}
+
+.euiPopover__panel {
+  z-index: 500 !important;
+}
+
+.css-s8iu-euiPanel-grow-m-plain-euiPopover__panel-isOpen-bottom-isOpen-bottom {
+  max-inline-size: calc(100vw) !important;
+}
