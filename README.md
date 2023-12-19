@@ -13,8 +13,8 @@ pip install streamlit-ontology-elements
 ```python
 import streamlit as st
 
-from st_ontology_elements import st_ontology_elements
+from semlookp_autocomplete import semlookp_autocomplete
 
-value = st_ontology_elements()
+value = semlookp_autocomplete()
 
 st.write(value)
