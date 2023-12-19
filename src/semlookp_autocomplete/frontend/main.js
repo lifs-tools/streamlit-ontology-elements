@@ -15,7 +15,7 @@ function sendValue(value) {
  */
 function onRender(event) {
   var display_rows = 7
-  const {label, value, ontologies, collection, entity_type, allow_custom_terms, has_short_selected_label, field_list, rows} = event.detail.args;
+  const {value, ontologies, collection, entity_type, allow_custom_terms, has_short_selected_label, field_list, rows} = event.detail.args;
   display_rows = Math.min(display_rows, Math.max(1, rows))
   // Only run the render code the first time the component is loaded.
   if (!window.rendered) {
@@ -58,7 +58,7 @@ function onRender(event) {
     }
 
     // On the mouse click event, send the new value to Python
-    input.onclick = event => sendValue({value: value, label: label})
+    input.onclick = event => sendValue({value: value})
     window.rendered = true
   }
   // Calculation of the height of the component, depending on the number of rows

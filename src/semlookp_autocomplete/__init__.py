@@ -8,12 +8,11 @@ import streamlit.components.v1 as components
 # and that the code to display that component is in the "frontend" folder
 frontend_dir = (Path(__file__).parent / "frontend").absolute()
 _component_func = components.declare_component(
-	"st_semlookp_autocomplete", path=str(frontend_dir)
+	"semlookp_autocomplete", path=str(frontend_dir)
 )
 
 # Create the python function that will be called
-def st_semlookp_autocomplete(
-    label: str,
+def semlookp_autocomplete(
     value: Optional[str] = None,
     key: Optional[str] = None,
     ontologies: Optional[str] = None,
@@ -29,7 +28,6 @@ def st_semlookp_autocomplete(
     Add a descriptive docstring
     """
     component_value = _component_func(
-        label=label,
         value=value,
         key=key,
         ontologies=ontologies,
@@ -43,24 +41,3 @@ def st_semlookp_autocomplete(
     )
 
     return component_value
-
-def main():
-    st.write("## Streamlit SemlookP Widgets Autocomplete Demo (efo, ms, chebi)")
-    value = st_semlookp_autocomplete(
-        "ontology elements", 
-        None,
-        "ENTER",
-        "efo,ms,chebi,ncit",
-        None,
-        "class",
-        True,
-        True,
-        "iri,label,short_form,obo_id,ontology_name,ontology_prefix,description,type",
-        7,
-        None
-    )
-
-    st.write(value)
-
-if __name__ == "__main__":
-    main()
